@@ -1,6 +1,8 @@
 # Shodan-Search
 Shodan-Search -> api = Shodan('Your_API_KEY')
 
+pip install -r requirements.txt
+
 
 ![Capture d’écran_2022-11-30_11-05-47](https://user-images.githubusercontent.com/98829957/204767646-b3fec73c-972a-42bb-a81f-6faffe9b32d7.png)
 
