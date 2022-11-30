@@ -1,5 +1,5 @@
 # Shodan-Search
-Shodan-Search.py -> api = Shodan('Your_API_KEY')
+
 
 pip install -r requirements.txt
 
