@@ -27,10 +27,7 @@ COLOR.YELLOW          , Timer()                             , COLOR.END
 
 
 try:
-	try:
-     		raise KeyboardInterrupt
-	except KeyboardInterrupt:
-     		print("Keyboard interrupt exception caught")
+	
 	def shosho2():	
 		counter = 1
 		
@@ -110,13 +107,13 @@ try:
 		print ("")
 		print ("Author: 000Tonio")
 		print ("github.com/000Tonio" + COLOR.END)
+		print (COLOR.RED + "V 1.0" + COLOR.END)
 		print (COLOR.YELLOW + "[!] Legal Disclaimer: We aren't responsible for bad use of this tool!" + COLOR.END)
 		print ("")
 		print("""
     		1.Simple IP
     		2.Multi IP
-    		3.Premiere utilisation
-    		4.Exit/Quit
+    		3.Exit/Quit
     		""")
 		ans=input("What would you like to do? ")
 		print("")
@@ -138,10 +135,6 @@ try:
       			time.sleep(1)
       			shosho()
 		elif ans=="3":
-			os.system('pip install progressbar2' if os.name == 'nt' else 'pip install progressbar')
-			os.system('pip install shodan' if os.name == 'nt' else 'pip install Shodan')
-			
-		elif ans=="4":
       			print("\n Goodbye") 
       			os._exit(1)
 		else:
