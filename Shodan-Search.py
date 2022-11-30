@@ -7,8 +7,13 @@ from tqdm import tqdm
 from progressbar import *
 import signal   
 
+Fichier = open("API_KEY.txt", "r")
+API = Fichier.read()
+
 os.system('cls' if os.name == 'nt' else 'clear')
-api = Shodan('Your_API_KEY')
+
+api = Shodan(API)
+Fichier.close()
 class COLOR:
 	GREEN = '\033[92m'
 	YELLOW = '\033[93m'
@@ -23,6 +28,7 @@ COLOR.YELLOW          , Percentage()                        , COLOR.END,
 COLOR.RED + COLOR.BOLD, Bar(left=' ', marker='━', right=' '), COLOR.END,
 COLOR.YELLOW          , Timer()                             , COLOR.END
 ]
+
 
 
 
@@ -58,17 +64,43 @@ try:
 			
 		print("\nLimit de 1 IP arriver a terme")
 		widgets[4] = COLOR.YELLOW
+		time.sleep(5)
+		print ("[+" + "-" * 78 + "+]")
+		choix = input("""\n \n \n
+		Voulez-vous faire une nouvelle recherche ? 
 		
-		os._exit(1)
+    		\noui
+    		\nnon
+    		
+    		\nRéponse : """)
+		
+		
+		if choix =="oui":
+      			print("")
+      			os.system('cls' if os.name == 'nt' else 'clear')
+		elif choix =="non":
+      			print("\n Goodbye")
+      			time.sleep(5)
+      			os.system('cls' if os.name == 'nt' else 'clear')
+      			os._exit(1)
+      			
+      				
+		
+		else:
+       			print("\n Not Valid Choice Try again")
+       			time.sleep(1)
+       			os.system('cls' if os.name == 'nt' else 'clear')
+		
 			
 		
 	def shosho():	
 		counter = 0
-		
+		z = True
 		a = 0
 		for result in api.search_cursor(mot) :
 			os.system('cls' if os.name == 'nt' else 'clear')
 			a = a + 1
+			
 			print ("[+" + "-" * 78 + "+]")
 			print ("[+] \033[1;31mIP: \033[1;m" + (result["ip_str"]))
 			print ("[+] \033[1;31mPort: \033[1;m" + str(result["port"]))
@@ -85,16 +117,46 @@ try:
 			data = ("\nIP: " + result["ip_str"]) + ("\nPort: " + str(result["port"])) + ("\nOrganisation: " + str(result["org"])) + ("\nLocation: " + str(result["location"])) + ("\nLayer: " + result["transport"]) + ("\nDomains: " + str(result["domains"])) + ("\nHostnames: " + str(result["hostnames"])) + ("\nData\n" + result["data"])
 			
 			counter = counter + 1
-			#progress()
+			
 			
 			if counter >= int(limit) + 1 :
 				print("\nLimit de "+ (str(limit)) +" arriver a terme")
 				widgets[4] = COLOR.YELLOW
 				pbar.finish()
-				os._exit(1)
+				z = False
+				time.sleep(5)
+				print ("[+" + "-" * 78 + "+]")
+				choix = input("""\n \n \n
+				Voulez-vous faire une nouvelle recherche ? 
+				
+		    		\noui
+		    		\nnon
+		    		
+		    		\nRéponse : """)
+				
+				
+				if choix =="oui":
+		      			print("")
+		      			os.system('cls' if os.name == 'nt' else 'clear')
+		      			return "good"
+				elif choix =="non":
+		      			print("\n Goodbye")
+		      			time.sleep(5)
+		      			os.system('cls' if os.name == 'nt' else 'clear')
+		      			os._exit(1)
+		      			
+		      				
+				
+				else:
+		       			print("\n Not Valid Choice Try again")
+		       			time.sleep(1)
+		       			os.system('cls' if os.name == 'nt' else 'clear')
+			if z == True :
+				pbar.update(a)
+				time.sleep(0.1)	
+						
 			
-			pbar.update(a)
-			time.sleep(0.1)
+			
 	
 	ans=True
 	while ans:
@@ -107,7 +169,7 @@ try:
 		print ("")
 		print ("Author: 000Tonio")
 		print ("github.com/000Tonio" + COLOR.END)
-		print (COLOR.RED + "V 1.0" + COLOR.END)
+		print (COLOR.RED +"V 1.0" + COLOR.END)
 		print (COLOR.YELLOW + "[!] Legal Disclaimer: We aren't responsible for bad use of this tool!" + COLOR.END)
 		print ("")
 		print("""
@@ -133,9 +195,10 @@ try:
       			numbers = range(int(limit))
       			pbar = ProgressBar(widgets=widgets, maxval=int(limit)).start()
       			time.sleep(1)
-      			shosho()
+      			shosho()	
 		elif ans=="3":
-      			print("\n Goodbye") 
+      			print("\n Goodbye")
+      			time.sleep(5)
       			os._exit(1)
 		else:
        			print("\n Not Valid Choice Try again")
