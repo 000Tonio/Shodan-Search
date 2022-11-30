@@ -39,6 +39,7 @@ try:
 		
 		
 		result = api.host(mot) 
+		file = open("Shodan_IP/Simple_IP/"+ result["ip_str"], "w")
 		os.system('cls' if os.name == 'nt' else 'clear')
 		
 		print ("[+" + "-" * 78 + "+]")
@@ -54,7 +55,7 @@ try:
 		#print ("[+] \033[1;31mThe banner information for the service: \033[1;m\n\n" + (result["data"]))
 		print ("\n[✓] Result: %s . Search query: %s" % (str(counter), str(mot)))
 		data = ("\nIP: " + result["ip_str"]) + ("\nPort: " + str(result.get("port"))) + ("\nOrganisation: " + str(result.get("org"))) + ("\nLocation: " + str(result.get("location"))) + ("\nLayer: " + str(result.get("transport"))) + ("\nDomains: " + str(result.get("domains"))) + ("\nHostnames: " + str(result.get("hostnames"))) + ("\nData\n" + str(result.get("data")))
-		
+		file.write(data)
 		
 		
 		
@@ -64,6 +65,7 @@ try:
 			
 		print("\nLimit de 1 IP arriver a terme")
 		widgets[4] = COLOR.YELLOW
+		file.close()
 		time.sleep(5)
 		print ("[+" + "-" * 78 + "+]")
 		choix = input("""\n \n \n
@@ -98,6 +100,7 @@ try:
 		z = True
 		a = 0
 		for result in api.search_cursor(mot) :
+			file = open("Shodan_IP/Multi_IP/"+ result["ip_str"], "w")
 			os.system('cls' if os.name == 'nt' else 'clear')
 			a = a + 1
 			
@@ -115,7 +118,7 @@ try:
 			#print ("[+] \033[1;31mThe banner information for the service: \033[1;m\n\n" + (result["data"]))
 			print ("\n[✓] Result: %s . Search query: %s" % (str(counter), str(mot)))
 			data = ("\nIP: " + result["ip_str"]) + ("\nPort: " + str(result["port"])) + ("\nOrganisation: " + str(result["org"])) + ("\nLocation: " + str(result["location"])) + ("\nLayer: " + result["transport"]) + ("\nDomains: " + str(result["domains"])) + ("\nHostnames: " + str(result["hostnames"])) + ("\nData\n" + result["data"])
-			
+			file.write(data)
 			counter = counter + 1
 			
 			
@@ -123,6 +126,7 @@ try:
 				print("\nLimit de "+ (str(limit)) +" arriver a terme")
 				widgets[4] = COLOR.YELLOW
 				pbar.finish()
+				file.close()
 				z = False
 				time.sleep(5)
 				print ("[+" + "-" * 78 + "+]")
@@ -169,7 +173,7 @@ try:
 		print ("")
 		print ("Author: 000Tonio")
 		print ("github.com/000Tonio" + COLOR.END)
-		print (COLOR.RED +"V 1.0" + COLOR.END)
+		print (COLOR.RED +"V 1.1" + COLOR.END)
 		print (COLOR.YELLOW + "[!] Legal Disclaimer: We aren't responsible for bad use of this tool!" + COLOR.END)
 		print ("")
 		print("""
