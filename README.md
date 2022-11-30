@@ -1,2 +1,2 @@
 # Shodan-Search
-Shodan
+Shodan-Search -> api = Shodan('Your_API_KEY')
