@@ -7,6 +7,8 @@ pip install -r requirements.txt
 
 Mettre clef API shodan dans le dossier API_KEY.txt
 
+Grab your API key from https://account.shodan.io
+
 # Utilisation
 
 
