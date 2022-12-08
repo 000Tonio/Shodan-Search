@@ -2,3 +2,5 @@ shodan
 progressbar
 progressbar2
 shodan-chrono
+colorama
+rich
