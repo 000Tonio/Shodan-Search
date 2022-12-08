@@ -222,7 +222,7 @@ try:
 				github.com/000Tonio
 		""" + COLOR.END)
 		print (COLOR.RED +"""
-					v 1.1
+					v 1.2
 		""" + COLOR.END)
 		print (COLOR.YELLOW + """
 				[!] Legal Disclaimer:
